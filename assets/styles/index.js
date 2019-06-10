@@ -26,11 +26,18 @@ export default StyleSheet.create({
 		backgroundColor: WHITE,
 		borderRadius: 8,
 		alignItems: "center",
-		margin: 10,
+		marginLeft:10,
+		marginRight:10,
+		marginTop:70,
+		paddingTop:30,
 		shadowOpacity: 0.05,
 		shadowRadius: 10,
 		shadowColor: BLACK,
 		shadowOffset: { height: 0, width: 0 }
+	},
+	title:{
+		fontSize:30,
+		textAlign:'center',
 	},
 	matchesCardItem: {
 		marginTop: -35,
@@ -76,10 +83,9 @@ export default StyleSheet.create({
 		paddingVertical: 30
 	},
 	button: {
-		width: 60,
-		height: 60,
-		borderRadius: 30,
-		backgroundColor: WHITE,
+		width: 80,
+		height: 80,
+		borderRadius: 40,
 		marginHorizontal: 7,
 		alignItems: "center",
 		justifyContent: "center",
@@ -87,6 +93,17 @@ export default StyleSheet.create({
 		shadowRadius: 20,
 		shadowColor: DARK_GRAY,
 		shadowOffset: { height: 10, width: 0 }
+	},
+	whiteText:{
+		fontSize:22,
+		color:'#fff',
+	},
+	buttonEmpty:{
+		backgroundColor:'#28a745',
+		marginRight:20
+	},
+	buttonFilled:{
+		backgroundColor:'#ffc107'
 	},
 	miniButton: {
 		width: 40,

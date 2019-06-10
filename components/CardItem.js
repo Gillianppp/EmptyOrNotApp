@@ -37,63 +37,29 @@ const CardItem = ({
 
 	return (
 		<View style={styles.containerCardItem}>
+		<Text style={styles.title}>Is the Sink Empty or Filled?</Text>
 			{/* IMAGE */}
 			<Image source={image} style={imageStyle} />
-
-			{/* MATCHES */}
-			{matches && (
-				<View style={styles.matchesCardItem}>
-					<Text style={styles.matchesTextCardItem}>
-						<Icon name="heart" /> {matches}% Match!
-					</Text>
-				</View>
-			)}
-
-			{/* NAME */}
-			<Text style={nameStyle}>{name}</Text>
-
-			{/* DESCRIPTION */}
-			{description && (
-				<Text style={styles.descriptionCardItem}>{description}</Text>
-			)}
-
-			{/* STATUS */}
-			{status && (
-				<View style={styles.status}>
-					<View style={status === "Online" ? styles.online : styles.offline} />
-					<Text style={styles.statusText}>{status}</Text>
-				</View>
-			)}
 
 			{/* ACTIONS */}
 			{actions && (
 				<View style={styles.actionsCardItem}>
-					<TouchableOpacity style={styles.miniButton}>
-						<Text style={styles.star}>
-							<Icon name="star" />
-						</Text>
-					</TouchableOpacity>
-
-					<TouchableOpacity style={styles.button} onPress={() => onPressLeft()}>
-						<Text style={styles.like}>
-							<Icon name="like" />
+					
+					<TouchableOpacity style={[styles.button, styles.buttonEmpty]} onPress={() => onPressLeft()}>
+						<Text style={styles.whiteText}>
+							Empty
 						</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity
-						style={styles.button}
+						style={[styles.button, styles.buttonFilled]}
 						onPress={() => onPressRight()}
 					>
-						<Text style={styles.dislike}>
-							<Icon name="dislike" />
+						<Text style={styles.whiteText}>
+							Filled
 						</Text>
 					</TouchableOpacity>
 
-					<TouchableOpacity style={styles.miniButton}>
-						<Text style={styles.flash}>
-							<Icon name="flash" />
-						</Text>
-					</TouchableOpacity>
 				</View>
 			)}
 		</View>

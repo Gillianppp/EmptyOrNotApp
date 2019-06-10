@@ -22,45 +22,6 @@ const App = createBottomTabNavigator(
 					);
 				}
 			}
-		},
-		Matches: {
-			screen: MatchesScreen,
-			navigationOptions: {
-				tabBarIcon: ({ focused }) => {
-					const iconFocused = focused ? "#7444C0" : "#363636";
-					return (
-						<Text style={[styles.iconMenu, { color: iconFocused }]}>
-							<Icon name="heart" />
-						</Text>
-					);
-				}
-			}
-		},
-		Chat: {
-			screen: MessagesScreen,
-			navigationOptions: {
-				tabBarIcon: ({ focused }) => {
-					const iconFocused = focused ? "#7444C0" : "#363636";
-					return (
-						<Text style={[styles.iconMenu, { color: iconFocused }]}>
-							<Icon name="chat" />
-						</Text>
-					);
-				}
-			}
-		},
-		Profile: {
-			screen: ProfileScreen,
-			navigationOptions: {
-				tabBarIcon: ({ focused }) => {
-					const iconFocused = focused ? "#7444C0" : "#363636";
-					return (
-						<Text style={[styles.iconMenu, { color: iconFocused }]}>
-							<Icon name="user" />
-						</Text>
-					);
-				}
-			}
 		}
 	},
 	{

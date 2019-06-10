@@ -14,10 +14,6 @@ const Home = () => {
 			style={styles.bg}
 		>
 			<View style={styles.containerHome}>
-				<View style={styles.top}>
-					<City />
-					<Filters />
-				</View>
 
 				<CardStack
 					loop={true}
