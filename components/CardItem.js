@@ -40,7 +40,10 @@ const CardItem = ({
 		<Text style={styles.title}>Is the Sink Empty or Filled?</Text>
 			{/* IMAGE */}
 			<Image source={image} style={imageStyle} />
-
+			<Text>
+			{name}
+			</Text>
+		
 			{/* ACTIONS */}
 			{actions && (
 				<View style={styles.actionsCardItem}>
