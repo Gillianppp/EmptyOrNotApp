@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ImageBackground } from "react-native";
+import { View, ImageBackground , FlatList, ActivityIndicator, Text } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
 import City from "../components/City";
 import Filters from "../components/Filters";
@@ -35,10 +35,9 @@ export default class Home extends React.Component{
     return (
     <ImageBackground source={require("../assets/images/bg.png")} style={styles.bg}>
       <View style={styles.containerHome}>
-				<View style={styles.top}>
-					<City />
-					<Filters />
-				</View>
+      <FlatList data={this.state.dataSource}
+           renderItem={({item}) => <Text>{item.url}</Text>}
+        />
         <CardStack
 					loop={true}
 					verticalSwipe={false}
