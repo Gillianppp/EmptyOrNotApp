@@ -48,7 +48,7 @@ const CardItem = ({
 				<View style={styles.actionsCardItem}>				
 					<TouchableOpacity style={[styles.button, styles.buttonEmpty]} onPress={() => onPressLeft()}>
 						<Text style={styles.whiteText}>
-							Empty
+							EmptyC
 						</Text>
 					</TouchableOpacity>
 

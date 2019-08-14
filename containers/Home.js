@@ -7,6 +7,7 @@ import CardItem from "../components/CardItem";
 import styles from "../assets/styles";
 import Demo from "../assets/data/demo.js";
 
+
 export default class Home extends React.Component{
   constructor(props){
     super(props);
@@ -15,6 +16,9 @@ export default class Home extends React.Component{
     }
   }
 
+  updateFilled() {
+    this.swiper.swipeLeft();
+  }
   componentDidMount(){
     return fetch('https://mk54o7cdli.execute-api.us-east-2.amazonaws.com/prod')
       .then((response) => response.json())
@@ -60,8 +64,8 @@ export default class Home extends React.Component{
 								name={item.id}
 								description={item.id}
 								matches={item.id}
-								actions
-								onPressLeft={() => this.swiper.swipeLeft()}
+                actions
+								onPressLeft={() => this.updateFilled()}
 								onPressRight={() => this.swiper.swipeRight()}
 							/>
 						</Card>
@@ -72,41 +76,3 @@ export default class Home extends React.Component{
     )
   }
  }
-// const Home = () => {
-// 	return (
-// 		<ImageBackground
-// 			source={require("../assets/images/bg.png")}
-// 			style={styles.bg}
-// 		>
-// 			<View style={styles.containerHome}>
-// 				<View style={styles.top}>
-// 					<City />
-// 					<Filters />
-// 				</View>
-
-// 				<CardStack
-// 					loop={true}
-// 					verticalSwipe={false}
-// 					renderNoMoreCards={() => null}
-// 					ref={swiper => (this.swiper = swiper)}
-// 				>
-// 					{Demo.map((item, index) => (
-// 						<Card key={index}>
-// 							<CardItem
-// 								image={item.image}
-// 								name={item.name}
-// 								description={item.description}
-// 								matches={item.match}
-// 								actions
-// 								onPressLeft={() => this.swiper.swipeLeft()}
-// 								onPressRight={() => this.swiper.swipeRight()}
-// 							/>
-// 						</Card>
-// 					))}
-// 				</CardStack>
-// 			</View>
-// 		</ImageBackground>
-// 	);
-// };
-
-//export default Home;
