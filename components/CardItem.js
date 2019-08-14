@@ -37,30 +37,63 @@ const CardItem = ({
 
 	return (
 		<View style={styles.containerCardItem}>
-		<Text style={styles.title}>Is the Sink Empty or Filled?</Text>
 			{/* IMAGE */}
-			<Image source={{uri: image}} style={imageStyle} />
-			
-			<Text style={nameStyle}>{image}</Text>
+			{/* <Image source={image} style={imageStyle} /> */}
+ <Image source={{uri: "https://pbs.twimg.com/profile_images/486929358120964097/gNLINY67_400x400.png"}} style={imageStyle} />
+			{/* MATCHES */}
+			{matches && (
+				<View style={styles.matchesCardItem}>
+					<Text style={styles.matchesTextCardItem}>
+						<Icon name="heart" /> {matches}% Match!
+					</Text>
+				</View>
+			)}
+
+			{/* NAME */}
+			<Text style={nameStyle}>{name}</Text>
+
+			{/* DESCRIPTION */}
+			{description && (
+				<Text style={styles.descriptionCardItem}>{description}</Text>
+			)}
+
+			{/* STATUS */}
+			{status && (
+				<View style={styles.status}>
+					<View style={status === "Online" ? styles.online : styles.offline} />
+					<Text style={styles.statusText}>{status}</Text>
+				</View>
+			)}
+
 			{/* ACTIONS */}
 			{actions && (
 				<View style={styles.actionsCardItem}>
-					
-					<TouchableOpacity style={[styles.button, styles.buttonEmpty]} onPress={() => onPressLeft()}>
-						<Text style={styles.whiteText}>
-							Empty
+					<TouchableOpacity style={styles.miniButton}>
+						<Text style={styles.star}>
+							<Icon name="star" />
+						</Text>
+					</TouchableOpacity>
+
+					<TouchableOpacity style={styles.button} onPress={() => onPressLeft()}>
+						<Text style={styles.like}>
+							<Icon name="like" />
 						</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity
-						style={[styles.button, styles.buttonFilled]}
+						style={styles.button}
 						onPress={() => onPressRight()}
 					>
-						<Text style={styles.whiteText}>
-							Filled
+						<Text style={styles.dislike}>
+							<Icon name="dislike" />
 						</Text>
 					</TouchableOpacity>
 
+					<TouchableOpacity style={styles.miniButton}>
+						<Text style={styles.flash}>
+							<Icon name="flash" />
+						</Text>
+					</TouchableOpacity>
 				</View>
 			)}
 		</View>
