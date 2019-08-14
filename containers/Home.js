@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ImageBackground , FlatList, ActivityIndicator, Text } from "react-native";
+import { View, ImageBackground , FlatList, ActivityIndicator, Text, Alert } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
 import City from "../components/City";
 import Filters from "../components/Filters";
@@ -12,13 +12,48 @@ export default class Home extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      isLoading: true
+      isLoading: true,
+      updateResponse:"response"
     }
   }
 
-  updateFilled() {
+  updateEmpty(id) {
     this.swiper.swipeLeft();
+    this.updateSinkStatus(id, 1,0,true);
   }
+
+  updateFilled(id){
+    this.swiper.swipeRight();
+    this.updateSinkStatus(id,0, 1, true);
+  }
+
+  updateSinkStatus(id, empty, filled, active){
+    fetch('https://mk54o7cdli.execute-api.us-east-2.amazonaws.com/prod?id='+id+'&empty='+empty+'&filled='+filled+'&active='+active, {  
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify({})
+    })
+    .then((response) => {
+      // Alert.alert("response: "+JSON.stringify(response));
+      // this.setState({
+      //   updateResponse: response
+      // }, function(){
+
+      // });
+    })
+    .catch((error) => {
+      // Alert.alert("Error:"+error);
+      // this.setState({
+      //   updateResponse: "error: "+error
+      // }, function(){
+
+      // });
+    })
+  }
+
   componentDidMount(){
     return fetch('https://mk54o7cdli.execute-api.us-east-2.amazonaws.com/prod')
       .then((response) => response.json())
@@ -62,11 +97,10 @@ export default class Home extends React.Component{
 							<CardItem
 								image={item.url}
 								name={item.id}
-								description={item.id}
 								matches={item.id}
                 actions
-								onPressLeft={() => this.updateFilled()}
-								onPressRight={() => this.swiper.swipeRight()}
+								onPressLeft={() => this.updateEmpty(item.id)}
+								onPressRight={() => this.updateFilled(item.id)}
 							/>
 						</Card>
 					))}

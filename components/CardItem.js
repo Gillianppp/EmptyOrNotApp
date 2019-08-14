@@ -39,7 +39,7 @@ const CardItem = ({
 		<View style={styles.containerCardItem}>
 			{/* IMAGE */}
  			<Image source={{uri: image}} style={imageStyle} />
-
+			<Text>{description}</Text>
 			{/* NAME */}
 			<Text style={nameStyle}>{name}</Text>
 
@@ -48,7 +48,7 @@ const CardItem = ({
 				<View style={styles.actionsCardItem}>				
 					<TouchableOpacity style={[styles.button, styles.buttonEmpty]} onPress={() => onPressLeft()}>
 						<Text style={styles.whiteText}>
-							EmptyC
+							Empty
 						</Text>
 					</TouchableOpacity>
 
