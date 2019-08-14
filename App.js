@@ -15,11 +15,7 @@ const App = createBottomTabNavigator(
 			navigationOptions: {
 				tabBarIcon: ({ focused }) => {
 					const iconFocused = focused ? "#7444C0" : "#363636";
-					return (
-						<Text style={[styles.iconMenu, { color: iconFocused }]}>
-							<Icon name="explore" />
-						</Text>
-					);
+					return;
 				}
 			}
 		}

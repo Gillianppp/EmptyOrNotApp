@@ -17,14 +17,32 @@ export default class Home extends React.Component{
     }
   }
 
-  updateEmpty(id) {
+  updateEmpty(id, empty, filled, active) {
     this.swiper.swipeLeft();
-    this.updateSinkStatus(id, 1,0,true);
+
+    if(empty != undefined){
+      empty = parseInt(empty);
+    }
+    if(filled !=undefined){
+      filled = parseInt(filled);
+    }
+
+    empty++;
+    this.updateSinkStatus(id, empty, filled ,active);
   }
 
-  updateFilled(id){
+  updateFilled(id, empty, filled, active){
     this.swiper.swipeRight();
-    this.updateSinkStatus(id,0, 1, true);
+
+    if(empty != undefined){
+      empty = parseInt(empty);
+    }
+    if(filled !=undefined){
+      filled = parseInt(filled);
+    }
+
+    filled++;
+    this.updateSinkStatus(id, empty , filled, active);
   }
 
   updateSinkStatus(id, empty, filled, active){
@@ -73,9 +91,8 @@ export default class Home extends React.Component{
   render(){
     if(this.state.isLoading){
       return(
-        <View style={{flex: 1, padding: 20}}>
-					<Text>Loading Here LOADING LOADING</Text>
-          <ActivityIndicator/>
+        <View style={{flex: 1, justifyContent:'center'}}>
+          <ActivityIndicator size="large" color="#0c62fb" />
         </View>
       )
     }
@@ -99,8 +116,8 @@ export default class Home extends React.Component{
 								name={item.id}
 								matches={item.id}
                 actions
-								onPressLeft={() => this.updateEmpty(item.id)}
-								onPressRight={() => this.updateFilled(item.id)}
+								onPressLeft={() => this.updateEmpty(item.id, item.emptyNum, item.filledNum, item.active)}
+								onPressRight={() => this.updateFilled(item.id, item.emptyNum, item.filledNum, item.active)}
 							/>
 						</Card>
 					))}
