@@ -39,7 +39,7 @@ const CardItem = ({
 		<View style={styles.containerCardItem}>
 			{/* IMAGE */}
 			{/* <Image source={image} style={imageStyle} /> */}
- <Image source={{uri: "https://pbs.twimg.com/profile_images/486929358120964097/gNLINY67_400x400.png"}} style={imageStyle} />
+ <Image source={{uri: image}} style={imageStyle} />
 
 			{/* NAME */}
 			<Text style={nameStyle}>{name}</Text>
