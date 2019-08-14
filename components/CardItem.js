@@ -38,39 +38,23 @@ const CardItem = ({
 	return (
 		<View style={styles.containerCardItem}>
 			{/* IMAGE */}
-			{/* <Image source={image} style={imageStyle} /> */}
- <Image source={{uri: image}} style={imageStyle} />
+ 			<Image source={{uri: image}} style={imageStyle} />
 
 			{/* NAME */}
 			<Text style={nameStyle}>{name}</Text>
 
 			{/* ACTIONS */}
 			{actions && (
-				<View style={styles.actionsCardItem}>
-					<TouchableOpacity style={styles.miniButton}>
-						<Text style={styles.star}>
-							<Icon name="star" />
+				<View style={styles.actionsCardItem}>				
+					<TouchableOpacity style={[styles.button, styles.buttonEmpty]} onPress={() => onPressLeft()}>
+						<Text style={styles.whiteText}>
+							Empty
 						</Text>
 					</TouchableOpacity>
 
-					<TouchableOpacity style={styles.button} onPress={() => onPressLeft()}>
-						<Text style={styles.like}>
-							<Icon name="like" />
-						</Text>
-					</TouchableOpacity>
-
-					<TouchableOpacity
-						style={styles.button}
-						onPress={() => onPressRight()}
-					>
-						<Text style={styles.dislike}>
-							<Icon name="dislike" />
-						</Text>
-					</TouchableOpacity>
-
-					<TouchableOpacity style={styles.miniButton}>
-						<Text style={styles.flash}>
-							<Icon name="flash" />
+					<TouchableOpacity style={[styles.button, styles.buttonFilled]} onPress={() => onPressRight()}>
+						<Text style={styles.whiteText}>
+							Filled
 						</Text>
 					</TouchableOpacity>
 				</View>
