@@ -39,9 +39,11 @@ const CardItem = ({
 		<View style={styles.containerCardItem}>
 		<Text style={styles.title}>Is the Sink Empty or Filled?</Text>
 			{/* IMAGE */}
-			<Image source={{uri: image}} style={imageStyle} />
-			
-			<Text style={nameStyle}>{image}</Text>
+			<Image source={image} style={imageStyle} />
+			<Text>
+			{name}
+			</Text>
+		
 			{/* ACTIONS */}
 			{actions && (
 				<View style={styles.actionsCardItem}>
