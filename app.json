@@ -1,4 +1,6 @@
 {
+  "name": "Empty Or Not",
+  "displayName":"Empty Or Not",
   "expo": {
     "name": "Empty Or Not",
     "slug": "emptyOrNot",

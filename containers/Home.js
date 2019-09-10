@@ -46,6 +46,7 @@ export default class Home extends React.Component{
   }
 
   updateSinkStatus(id, empty, filled, active){
+    Alert.alert("update", empty, filled);
     fetch('https://mk54o7cdli.execute-api.us-east-2.amazonaws.com/prod?id='+id+'&empty='+empty+'&filled='+filled+'&active='+active, {  
       method: 'PUT',
       headers: {
@@ -107,7 +108,9 @@ export default class Home extends React.Component{
 					loop={true}
 					verticalSwipe={false}
 					renderNoMoreCards={() => null}
-					ref={swiper => (this.swiper = swiper)}
+          ref={swiper => (this.swiper = swiper)}
+          onSwipedRight ={() => Alert.alert("card stack swipe right"+index)}
+          
 				>
 					{this.state.dataSource.map((item, index) => (
 						<Card key={index}>
@@ -115,7 +118,7 @@ export default class Home extends React.Component{
 								image={item.url}
 								name={item.id}
 								matches={item.id}
-                actions
+                actions            
 								onPressLeft={() => this.updateEmpty(item.id, item.emptyNum, item.filledNum, item.active)}
 								onPressRight={() => this.updateFilled(item.id, item.emptyNum, item.filledNum, item.active)}
 							/>
