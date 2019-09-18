@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ImageBackground , FlatList, ActivityIndicator, Text, Alert } from "react-native";
+import { View, ImageBackground , FlatList, ActivityIndicator, Text } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
 import City from "../components/City";
 import Filters from "../components/Filters";
@@ -46,7 +46,7 @@ export default class Home extends React.Component{
   }
 
   updateSinkStatus(id, empty, filled, active){
-    Alert.alert("update", empty, filled);
+    //Alert.alert("update", empty, filled);
     fetch('https://mk54o7cdli.execute-api.us-east-2.amazonaws.com/prod?id='+id+'&empty='+empty+'&filled='+filled+'&active='+active, {  
       method: 'PUT',
       headers: {
@@ -57,11 +57,11 @@ export default class Home extends React.Component{
     })
     .then((response) => {
       // Alert.alert("response: "+JSON.stringify(response));
-      // this.setState({
-      //   updateResponse: response
-      // }, function(){
+      this.setState({
+        updateResponse: response
+      }, function(){
 
-      // });
+      });
     })
     .catch((error) => {
       // Alert.alert("Error:"+error);
@@ -74,18 +74,26 @@ export default class Home extends React.Component{
   }
 
   componentDidMount(){
+    this.setState({
+      error:'error'
+    })
     return fetch('https://mk54o7cdli.execute-api.us-east-2.amazonaws.com/prod')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
           isLoading: false,
+          status:"SUCCESS",
           dataSource: responseJson.images,
         }, function(){
 
         });
       })
       .catch((error) => {
-
+        this.setState({
+          isLoading: false,
+          status:"ERROR",
+          error:error.message,
+        })
       })
   }
 
@@ -93,6 +101,8 @@ export default class Home extends React.Component{
     if(this.state.isLoading){
       return(
         <View style={{flex: 1, justifyContent:'center'}}>
+        <Text>{this.state.error}</Text>
+        <Text>Loading</Text>
           <ActivityIndicator size="large" color="#0c62fb" />
         </View>
       )
@@ -100,16 +110,17 @@ export default class Home extends React.Component{
 
     return (
     <ImageBackground source={require("../assets/images/bg.png")} style={styles.bg}>
+    <Text>{this.state.staus}</Text>
       <View style={styles.containerHome}>
       {/* <FlatList data={this.state.dataSource}
            renderItem={({item}) => <Text>{item.url}</Text>}
         /> */}
-        <CardStack
+
+      <CardStack
 					loop={true}
 					verticalSwipe={false}
 					renderNoMoreCards={() => null}
           ref={swiper => (this.swiper = swiper)}
-          onSwipedRight ={() => Alert.alert("card stack swipe right"+index)}
           
 				>
 					{this.state.dataSource.map((item, index) => (
@@ -125,6 +136,7 @@ export default class Home extends React.Component{
 						</Card>
 					))}
 				</CardStack>
+   
       </View>
     </ImageBackground>
     )

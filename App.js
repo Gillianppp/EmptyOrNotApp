@@ -32,8 +32,8 @@ const App = createBottomTabNavigator(
 			style: {
 				backgroundColor: "#FFF",
 				borderTopWidth: 0,
-				paddingVertical: 30,
-				height: 60,
+				paddingVertical: 0,
+				height: 0,
 				marginBottom: 0,
 				shadowOpacity: 0.05,
 				shadowRadius: 10,
