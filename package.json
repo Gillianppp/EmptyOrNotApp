@@ -10,7 +10,7 @@
   "dependencies": {
     "react": "16.8.6",
     "react-native": "0.60.5",
-    "aws-sdk": "^2.475.0",
+    "aws-sdk": "^2.814.0",
     "react-dom": "^16.8.6",
     "react-native-card-stack-swiper": "^1.1.0",
     "react-native-gesture-handler": "^1.0.12",
